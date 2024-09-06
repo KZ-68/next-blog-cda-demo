@@ -4,6 +4,7 @@ import { formatDate } from '@/lib/utils'
 import React, { useEffect, useState } from 'react'
 import ArticleCard from '@/components/ArticleCard'
 import Button from '@/components/Button'
+import Link from 'next/link'
 
 
 const ArticlePage = () => {
@@ -23,16 +24,16 @@ const ArticlePage = () => {
     // })
     
     // VERSION 2 - HOOKS
-    const [articles, setArticles] = useState([])
+    const [articles, setArticles] = useState<ArticleWithTagsAndComments[]>([])
 
     useEffect(() => {
         const fetchArticles = async () => {
-            const response = await fetch('api/article')
-            const data = await response.json()
+            const response = await fetch('/api/article')
+            const data : ArticleWithTagsAndComments[] = await response.json()
             setArticles(data)
         }
         fetchArticles()
-    })
+    }, [])
 
     return (
         <>
@@ -41,7 +42,9 @@ const ArticlePage = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {/* Liste des articles */}
                 {articles.map((article: any) => (
-                    <ArticleCard article={article} key={article.id}/>
+                    <Link href={`article/${article.id}`} key={article.id}>
+                        <ArticleCard article={article}/>
+                    </Link>
                 ))}
             </div>
         </>
