@@ -2,17 +2,37 @@ import React from 'react'
 import { formatDate } from '@/lib/utils'
 import Button from './Button'
 import Tag from './Tag'
+import { useRouter } from 'next/navigation';
 
 interface ArticleCardProps {
     article: ArticleWithTagsAndComments;
 }
 
 const ArticleCard:React.FC<ArticleCardProps> = ({article}) => {
+
+    const router = useRouter();
+
+    const handleDelete = async () => {
+
+        const confirmDelete = window.confirm('Are you sure you want to delete this article ?')
+        if(!confirmDelete) return;
+
+        try {
+            const res = await fetch(`/api/article/${article.id}/delete`, {
+                method: 'DELETE'
+            })
+
+            router.push('/article')
+        } catch(error) {
+            console.error("Error deleting article")
+        }
+    }
+
     return (
         <div className='group border border-slate-500 p-6 rounded-md hover:bg-slate-700 cursor-pointer hover:translate-y-2 duration-300' key={article.id}>
             {/* Titre de l'article */}
             <h2 className='text-2xl md:text-xl font-bold'>{article.title}</h2>
-            <p className='text-sm text-slate-300'>{formatDate(article.createdAt)} {formatDate(article.createdAt)}</p>
+            <p className='text-sm text-slate-300'>{formatDate(article.createdAt)}</p>
             <div className='flex flex-wrap gap-2 my-4'>
                 {article.tags.map((tagArticle:any)=> (
                     <Tag text={tagArticle.tag.name} key={tagArticle.tag.id}/>
@@ -23,6 +43,10 @@ const ArticleCard:React.FC<ArticleCardProps> = ({article}) => {
             <p className='line-clamp-4'>{article.text}</p>
 
             <Button href="https://google.fr" label="Lire plus..."/>
+            <div className='sm:top-5 sm:right-5 my-4'>
+                <button className="flex gap-2 px-5 py-2 rounded-md bg-red-500 hover:bg-red-600 text-xs" 
+                onClick={handleDelete}>Delete</button>
+            </div>
         </div>
     )
 }
