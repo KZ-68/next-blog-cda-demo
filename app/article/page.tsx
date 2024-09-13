@@ -38,7 +38,7 @@ const ArticlePage = () => {
     return (
         <>
             <Button href='https://elan-formation.fr/accueil' label='Retour'/>
-            <h1 className='text-4xl font-bold mb-6'>Blog</h1>
+            <h1 className='text-4xl font-bold mt-4 mb-6'>Blog</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {/* Liste des articles */}
                 {articles.map((article: any) => (
