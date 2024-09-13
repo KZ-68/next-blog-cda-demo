@@ -3,6 +3,7 @@ import { formatDate } from '@/lib/utils'
 import Button from './Button'
 import Tag from './Tag'
 import { useRouter } from 'next/navigation';
+import { Trash2Icon } from 'lucide-react';
 
 interface ArticleCardProps {
     article: ArticleWithTagsAndComments;
@@ -45,7 +46,7 @@ const ArticleCard:React.FC<ArticleCardProps> = ({article}) => {
             <Button href="https://google.fr" label="Lire plus..."/>
             <div className='sm:top-5 sm:right-5 my-4'>
                 <button className="flex gap-2 px-5 py-2 rounded-md bg-red-500 hover:bg-red-600 text-xs" 
-                onClick={handleDelete}>Delete</button>
+                onClick={handleDelete}><Trash2Icon size={15} />Delete</button>
             </div>
         </div>
     )

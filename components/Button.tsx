@@ -8,7 +8,7 @@ interface ButtonProps {
 
 const Button:React.FC<ButtonProps> = ({label, href}) => {
   return (
-    <Link className='inline-block px-5 py-2 mt-3 bg-cyan-900 hover:bg-cyan-800 rounded-lg' href={href}>
+    <Link className='inline-block px-5 py-2 mt-3 bg-cyan-900 hover:bg-cyan-800 rounded-lg text-xs' href={href}>
       {label}
     </Link>
   )
