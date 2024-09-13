@@ -1,4 +1,5 @@
 "use client"
+import Comment from '@/components/Comment'
 import Tag from '@/components/Tag'
 import { formatDate } from '@/lib/utils'
 import Link from 'next/link'
@@ -30,12 +31,8 @@ const ArticleDetailPage = ({params} : {params : {articleId: string}}) => {
                 <h2 className='mb-4 text-xl'>Les commentaires ({article?.comments.length}) :</h2>
                 <ul>
                     {article?.comments && article.comments.length > 0 ? (
-                        article?.comments.map((comment: CommentType) => (
-                            <li key={comment.id} className='m-5 group border border-slate-500 p-6 rounded-sm'>
-                                <h3>{comment.userId}</h3>
-                                <p className='text-sm text-slate-300'>{formatDate(article.createdAt)}</p>
-                                <p>{comment.text}</p>
-                            </li>
+                        article?.comments.map((comment: any) => (
+                            <Comment key={comment.id} comment={comment} article={article} />
                         ))
                     ) : (
                         <p>
