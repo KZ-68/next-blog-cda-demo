@@ -44,9 +44,7 @@ const ArticleCard:React.FC<ArticleCardProps> = ({article}) => {
             <p className='line-clamp-4'>{article.text}</p>
             
             <div>
-            if({pageLocation().href = '/article/hotel'}) {
-                
-            }
+
             </div>
             <Button href="https://google.fr" label="Lire plus..."/>
             <div className='sm:top-5 sm:right-5 my-4'>
