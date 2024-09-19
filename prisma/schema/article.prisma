@@ -4,7 +4,7 @@ model Article {
     text String
     slug String @unique
     rating Int @default(0)
-    Image String @default("Image unaviable !")
+    Image String @default("Image unaviable")
  
     createdAt DateTime @default(now())
  
