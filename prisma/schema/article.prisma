@@ -3,7 +3,8 @@ model Article {
     title String
     text String
     slug String @unique
-    test String @default("test")
+    rating Int @default(0)
+    Image String @default("Image unaviable")
  
     createdAt DateTime @default(now())
  
