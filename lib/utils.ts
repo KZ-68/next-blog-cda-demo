@@ -7,3 +7,7 @@ export function formatDate(date: Date): string {
 export const slugify = (str: string) => {
     return str.toLowerCase().trim().replace(/[\s\W-]+/g, "-").replace(/^-+|-+$/g, "");
 }
+
+export const pageLocation = () => {
+    return window.location;
+}

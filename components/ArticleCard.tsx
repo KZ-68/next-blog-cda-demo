@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatDate } from '@/lib/utils'
+import { formatDate, pageLocation } from '@/lib/utils'
 import Button from './Button'
 import Tag from './Tag'
 import { useRouter } from 'next/navigation';
@@ -30,11 +30,11 @@ const ArticleCard:React.FC<ArticleCardProps> = ({article}) => {
     }
 
     return (
-        <div className='group border border-slate-500 p-6 rounded-md hover:bg-slate-700 cursor-pointer hover:translate-y-2 duration-300' key={article.id}>
+        <div className='group border border-slate-500 p-6 rounded-md hover:bg-slate-700 cursor-pointer hover:translate-y-2 duration-300 md:h-full' key={article.id}>
             {/* Titre de l'article */}
             <h2 className='text-2xl md:text-xl font-bold'>{article.title}</h2>
             <p className='text-sm text-slate-300'>{formatDate(article.createdAt)}</p>
-            <div className='flex flex-wrap gap-2 my-4'>
+            <div className='flex flex-wrap gap-2 my-4 md:leading-8'>
                 {article.tags.map((tagArticle:any)=> (
                     <Tag text={tagArticle.tag.name} key={tagArticle.tag.id}/>
                 ))}
@@ -42,7 +42,12 @@ const ArticleCard:React.FC<ArticleCardProps> = ({article}) => {
             
             {/* Texte de l'article */}
             <p className='line-clamp-4'>{article.text}</p>
-
+            
+            <div>
+            if({pageLocation().href = '/article/hotel'}) {
+                
+            }
+            </div>
             <Button href="https://google.fr" label="Lire plus..."/>
             <div className='sm:top-5 sm:right-5 my-4'>
                 <button className="flex gap-2 px-5 py-2 rounded-md bg-red-500 hover:bg-red-600 text-xs" 

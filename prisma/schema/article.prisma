@@ -3,6 +3,7 @@ model Article {
     title String
     text String
     slug String @unique
+    test String
  
     createdAt DateTime @default(now())
  
