@@ -3,7 +3,7 @@ model Article {
     title String
     text String
     slug String @unique
-    test String
+    test String @default("test")
  
     createdAt DateTime @default(now())
  
